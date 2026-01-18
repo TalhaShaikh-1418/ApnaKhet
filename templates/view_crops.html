@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Browse Crops</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>ApnaKhet</h2>
+    <a href="/user">Dashboard</a>
+    <a href="/view_crops">Browse Crops</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Available Crops</h2>
+<p>Fresh crops directly from farmers</p>
+
+<!-- 🔍 SEARCH BAR -->
+<form method="GET" style="margin-bottom:20px;">
+    <input type="text" name="search" placeholder="Search crop..."
+           style="padding:10px; width:250px; border-radius:6px;">
+    <button type="submit">Search</button>
+</form>
+
+<div class="crop-grid">
+
+{% for crop in crops %}
+<div class="crop">
+
+    <img src="/{{ crop[5] }}">
+
+    <h4>{{ crop[2] }}</h4>
+    <p>₹{{ crop[3] }} / Kg</p>
+    <p>Quantity: {{ crop[4] }} Kg</p>
+
+    <div style="margin-top:8px;">
+        <strong>Farmer:</strong> {{ crop[7] }} <br>
+        <strong>Contact:</strong> {{ crop[8] }}
+    </div>
+
+    <a href="tel:{{ crop[8] }}">
+        <button>Call Farmer</button>
+    </a>
+
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+<title>Signup</title>
+</head>
+<body>
+
+<div class="page">
+<div class="card">
+    <div class="logo">🌱 ApnaKhet</div>
+    <h3>Signup</h3>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="mobile" placeholder="Mobile Number" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <select name="role">
+            <option value="farmer">Farmer</option>
+            <option value="user">Buyer</option>
+        </select>
+
+        <button>Create Account</button>
+    </form>
+
+    <div class="link">
+        Already have an account? <a href="/login">Login</a>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

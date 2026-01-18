@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/static/style.css">
+
+<h2>Edit Crop</h2>
+
+<form method="POST">
+    Crop Name:
+    <input type="text" name="crop_name" value="{{ crop[2] }}" required><br><br>
+
+    Price per Kg:
+    <input type="number" name="price" value="{{ crop[3] }}" required><br><br>
+
+    Quantity:
+    <input type="number" name="quantity" value="{{ crop[4] }}" required><br><br>
+
+    <button type="submit">Update Crop</button>
+</form>
+
+<a href="/my_crops">Back</a>

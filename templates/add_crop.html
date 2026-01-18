@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Add Crop</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>ApnaKhet</h2>
+    <a href="/farmer">Dashboard</a>
+    <a href="/my_crops">My Crops</a>
+    <a href="/add_crop">Add Crop</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Add New Crop</h2>
+
+<div class="card" style="max-width:500px;">
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Crop Name</label><br>
+    <input type="text" name="crop_name" required><br><br>
+
+    <label>Price per Kg</label><br>
+    <input type="number" name="price" required><br><br>
+
+    <label>Quantity (Kg)</label><br>
+    <input type="number" name="quantity" required><br><br>
+
+    <label>Crop Image</label><br>
+    <input type="file" name="image" accept="image/*" required><br><br>
+
+    <label>Crop Video</label><br>
+    <input type="file" name="video" accept="video/*"><br><br>
+
+    <button type="submit">Add Crop</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

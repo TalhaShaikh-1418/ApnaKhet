@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>User Dashboard</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>ApnaKhet</h2>
+    <a href="/user">Dashboard</a>
+    <a href="/view_crops">Browse Crops</a>
+    <a href="/contact_farmers">Contact Farmers</a>
+    <a href="/trusted_market">Trusted Market</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Welcome to ApnaKhet</h2>
+<p>Buy fresh crops directly from farmers — no middlemen.</p>
+
+<div class="top-cards">
+
+    <div class="card">
+        <h3>Total Farmers</h3>
+        <h1>{{ total_farmers }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Total Buyers</h3>
+        <h1>{{ total_users }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Total Crops</h3>
+        <h1>{{ total_crops }}</h1>
+    </div>
+
+</div>
+<br>
+
+<div class="top-cards">
+    <div class="card">
+        <h3>Browse Crops</h3>
+        <p>See all available crops</p>
+        <a href="/view_crops"><button>Explore</button></a>
+    </div>
+
+    <div class="card">
+        <h3>Contact Farmers</h3>
+        <p>Direct communication</p>
+        <a href="/view_crops"><button>View Sellers</button></a>
+    </div>
+
+    <div class="card">
+        <h3>Trusted Market</h3>
+        <p>No middlemen involved</p>
+        <button disabled>Verified</button>
+    </div>
+</div>
+
+<!-- ⭐ NEW: RECENT CROPS PREVIEW -->
+<h3 style="margin-top:30px;">Recently Added Crops</h3>
+
+<div class="crop-grid">
+{% for crop in recent_crops %}
+    <div class="crop">
+        <img src="/{{ crop[5] }}">
+        <h4>{{ crop[2] }}</h4>
+        <p>₹{{ crop[3] }} / Kg</p>
+    </div>
+{% endfor %}
+</div>
+
+<div class="card" style="margin-top:25px;">
+    <h3>Why ApnaKhet?</h3>
+    <p>ApnaKhet helps farmers earn more and buyers get better quality at fair prices.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h2>ApnaKhet</h2>
+
+    <!-- 🔰 PROFILE INSIDE GREEN SIDEBAR -->
+    <div style="background:rgba(255,255,255,0.15); padding:12px; border-radius:10px; margin:15px 0;">
+
+        <div style="display:flex; align-items:center; gap:10px;">
+            <img src="/{{ user[6] or 'static/uploads/default.png' }}"
+                 style="width:50px; height:50px; border-radius:50%; object-fit:cover;">
+            <div>
+                <strong>{{ user[1] }}</strong><br>
+                <small>Farmer</small>
+            </div>
+        </div>
+
+        <div style="margin-top:10px; font-size:14px;">
+            📍 {{ user[7] or 'Address not set' }}<br> <br>
+            📞 {{ user[2] }}
+        </div>
+
+        <div style="margin-top:8px;">
+            <a href="/profile" style="color:#fff; text-decoration:underline;">Edit Profile</a>
+        </div>
+
+    </div>
+    <!-- 🔰 PROFILE END -->
+
+    <a href="/farmer">Dashboard</a>
+    <a href="/my_crops">My Crops</a>
+    <a href="/add_crop">Add Crop</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+
+</div>
+
+<div class="main">
+
+<h2>Farmer Dashboard</h2>
+
+<div class="top-cards">
+    <div class="card">
+        <h3>Total Crops</h3>
+        <h1>{{ total_crops }}</h1>
+    </div>
+</div>
+
+<h3 style="margin-top:25px;">My Crops</h3>
+
+<div class="crop-grid">
+{% for crop in crops %}
+    <div class="crop">
+        <img src="/{{ crop[5] }}">
+        <h4>{{ crop[2] }}</h4>
+        <p>₹{{ crop[3] }} / Kg</p>
+        <a href="/edit_crop/{{ crop[0] }}"><button>Edit</button></a>
+    </div>
+{% endfor %}
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

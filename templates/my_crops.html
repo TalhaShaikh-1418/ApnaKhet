@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>My Crops</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>ApnaKhet</h2>
+    <a href="/farmer">Dashboard</a>
+    <a href="/add_crop">Add Crop</a>
+    <a href="/my_crops">My Crops</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<h2>My Crops</h2>
+
+<div class="crop-grid">
+
+{% for crop in crops %}
+<div class="crop">
+
+    <img src="/{{ crop[5] }}">
+
+    <h4>{{ crop[2] }}</h4>
+    <p>₹{{ crop[3] }} / Kg</p>
+    <p>Qty: {{ crop[4] }} Kg</p>
+
+    <div style="margin-top:10px;">
+        <a href="/edit_crop/{{ crop[0] }}"><button>Edit</button></a>
+        <a href="/delete_crop/{{ crop[0] }}" onclick="return confirm('Delete this crop?')">
+            <button style="background:#c62828;">Delete</button>
+        </a>
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Admin Panel</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin">Dashboard</a>
+    <a href="/manage_users">Manage Users</a>
+    <a href="/manage_crops">Manage Crops</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+<h2>System Overview</h2>
+
+<div class="top-cards">
+    <div class="card">
+        <h3>Total Users</h3>
+        <h1>{{ total_users }}</h1>
+    </div>
+
+    <div class="card">
+        <h3>Total Crops</h3>
+        <h1>{{ total_crops }}</h1>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

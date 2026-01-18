@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Contact Farmers</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>ApnaKhet</h2>
+    <a href="/user">Dashboard</a>
+    <a href="/view_crops">Browse Crops</a>
+    <a href="/contact_farmers">Contact Farmers</a>
+    <a href="/contact">Contact</a>
+
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Contact Farmers</h2>
+<p>Connect directly with farmers</p>
+
+<div class="crop-grid">
+
+{% for farmer in farmers %}
+<div class="crop">
+    <h4>{{ farmer[0] }}</h4>
+    <p>📞 {{ farmer[1] }}</p>
+    <p>📍 {{ farmer[2] }}</p>
+
+    <a href="tel:{{ farmer[1] }}">
+        <button>Call</button>
+    </a>
+
+    <a href="https://wa.me/91{{ farmer[1] }}" target="_blank">
+        <button>WhatsApp</button>
+    </a>
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

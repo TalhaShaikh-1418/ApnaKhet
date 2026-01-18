@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Manage Users</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin">Dashboard</a>
+    <a href="/manage_users">Manage Users</a>
+    <a href="/manage_crops">Manage Crops</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+<h2>All Users</h2>
+
+<!-- 🔍 SEARCH BAR -->
+<form action="/manage_users_search" method="GET" style="margin-bottom:15px;">
+    <input type="text" name="search" placeholder="Search name or mobile">
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" cellpadding="10" cellspacing="0">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+{% for user in users %}
+<tr>
+<td>{{ user[0] }}</td>
+<td>{{ user[1] }}</td>
+<td>{{ user[2] }}</td>
+<td>{{ user[3] }}</td>
+<td>
+    <a href="/delete_user/{{ user[0] }}" onclick="return confirm('Delete this user?')">
+        <button>Delete</button>
+    </a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

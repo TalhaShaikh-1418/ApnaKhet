@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/dashboard.css">
+<title>Manage Crops</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin">Dashboard</a>
+    <a href="/manage_users">Manage Users</a>
+    <a href="/manage_crops">Manage Crops</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+<h2>All Crops</h2>
+
+<table border="1" cellpadding="10" cellspacing="0">
+<tr>
+<th>ID</th>
+<th>Crop</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Farmer</th>
+<th>Action</th>
+</tr>
+
+{% for crop in crops %}
+<tr>
+<td>{{ crop[0] }}</td>
+<td>{{ crop[2] }}</td>
+<td>₹{{ crop[3] }}</td>
+<td>{{ crop[4] }} Kg</td>
+<td>{{ crop[7] }}</td>
+<td>
+    <a href="/admin_delete_crop/{{ crop[0] }}"
+       onclick="return confirm('Delete this crop?')">
+        <button>Delete</button>
+    </a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
