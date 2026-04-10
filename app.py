@@ -22,7 +22,7 @@ app.secret_key = "apnakhet_secret"
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="1418",   # yaha apna MySQL password daal
+    password="1418",   
     database="apnakhet_db"
 )
 cursor = db.cursor()

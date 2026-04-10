@@ -21,3 +21,9 @@ CREATE TABLE crops (
     video VARCHAR(200)
 );
 
+ALTER TABLE users 
+MODIFY role ENUM('admin','farmer','user');
+
+DESCRIBE users;
+INSERT INTO users (name, mobile, password, role)
+VALUES ('Admin', '9822481115', 'admin@123', 'admin');
