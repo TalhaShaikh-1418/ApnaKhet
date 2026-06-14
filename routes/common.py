@@ -1,6 +1,13 @@
 import smtplib
+import os
 from email.message import EmailMessage
 from flask import Blueprint, render_template, request
+from dotenv import load_dotenv
+
+load_dotenv()
+
+EMAIL_USER = os.getenv("EMAIL_USER")
+EMAIL_PASS = os.getenv("EMAIL_PASS")
 
 common_bp = Blueprint("common", __name__)
 
@@ -20,8 +27,8 @@ def contact():
 
         msg = EmailMessage()
         msg["Subject"] = "New Contact Message - ApnaKhet"
-        msg["From"] = email
-        msg["To"] = "talhashaikh3408@gmail.com"
+        msg["From"] = EMAIL_USER
+        msg["To"] = EMAIL_USER
 
         msg.set_content(f"""
 New Message from ApnaKhet Contact Form
@@ -34,12 +41,16 @@ Message:
 {message}
 """)
 
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login("talhashaikh3408@gmail.com", "ljiwkhqqjscqtirl")
-        server.send_message(msg)
-        server.quit()
+        try:
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.starttls()
+            server.login(EMAIL_USER, EMAIL_PASS)
+            server.send_message(msg)
+            server.quit()
 
-        return "Message sent successfully! We'll contact you soon."
+            return "Message sent successfully! We'll contact you soon."
+
+        except Exception as e:
+            return f"Error sending message: {e}"
 
     return render_template("contact.html")
