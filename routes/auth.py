@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session
-from utils.db import cursor, db
+from utils.db import get_db
 import random
+from utils.db import cursor, db
 
 # Blueprint create
 auth_bp = Blueprint("auth", __name__)
@@ -71,6 +72,9 @@ def login():
     if request.method == "POST":
         mobile = request.form["mobile"]
         password = request.form["password"]
+
+        if not db.is_connected():
+            db.reconnect(attempts=3, delay=2)
 
         query = """
         SELECT * FROM users
