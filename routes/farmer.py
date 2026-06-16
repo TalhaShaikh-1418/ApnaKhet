@@ -130,7 +130,6 @@ def delete_crop(crop_id):
 
     return redirect("/my_crops")
 
-
 # ---------------- PROFILE ----------------
 @farmer_bp.route("/profile", methods=["GET", "POST"])
 def profile():
@@ -141,13 +140,44 @@ def profile():
 
     if request.method == "POST":
         name = request.form["name"]
+        address = request.form["address"]
 
-        cursor.execute(
-            "UPDATE users SET name=%s WHERE id=%s",
-            (name, uid)
-        )
+        photo_path = None
+
+        if "photo" in request.files:
+            photo = request.files["photo"]
+
+            if photo and photo.filename != "":
+                filename = secure_filename(photo.filename)
+
+                upload_folder = "static/uploads"
+                if not os.path.exists(upload_folder):
+                    os.makedirs(upload_folder)
+
+                photo_path = os.path.join(upload_folder, filename)
+                photo.save(photo_path)
+
+        if photo_path:
+            cursor.execute(
+                """
+                UPDATE users
+                SET name=%s, address=%s, photo=%s
+                WHERE id=%s
+                """,
+                (name, address, photo_path, uid)
+            )
+        else:
+            cursor.execute(
+                """
+                UPDATE users
+                SET name=%s, address=%s
+                WHERE id=%s
+                """,
+                (name, address, uid)
+            )
 
         db.commit()
+
         return redirect("/farmer")
 
     cursor.execute("SELECT * FROM users WHERE id=%s", (uid,))

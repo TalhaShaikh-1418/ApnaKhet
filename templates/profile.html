@@ -1,38 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<link rel="stylesheet" href="/static/dashboard.css">
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" href="/static/dashboard.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="sidebar">
+        <h2>ApnaKhet</h2>
+        <a href="/farmer">Dashboard</a>
+        <a href="/contact">Contact</a>
+        <a href="/logout">Logout</a>
+      </div>
 
-<div class="wrapper">
-<div class="sidebar">
-<h2>ApnaKhet</h2>
-<a href="/farmer">Dashboard</a>
-<a href="/contact">Contact</a>
-<a href="/logout">Logout</a>
-</div>
+      <div class="main">
+        <h2>Update Profile</h2>
 
-<div class="main">
+        <form method="POST" enctype="multipart/form-data" class="card">
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value="{{ user[1] }}"
+            required
+          /><br /><br />
 
-<h2>Update Profile</h2>
+          <label>Address</label>
+          <input
+            type="text"
+            name="address"
+            value="{{ user[6] or '' }}"
+            required
+          /><br /><br />
 
-<form method="POST" enctype="multipart/form-data" class="card">
+          <label>Profile Photo</label>
+          <input type="file" name="photo" /><br /><br />
 
-<label>Name</label>
-<input type="text" name="name" value="{{ user[1] }}" required><br><br>
-
-<label>Address</label>
-<input type="text" name="address" value="{{ user[5] or '' }}" required><br><br>
-
-<label>Profile Photo</label>
-<input type="file" name="photo"><br><br>
-
-<button>Save</button>
-</form>
-
-</div>
-</div>
-
-</body>
+          <button>Save</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
