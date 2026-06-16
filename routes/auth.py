@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session
-from utils.db import get_db
-import random
 from utils.db import cursor, db
+import random
+
 
 # Blueprint create
 auth_bp = Blueprint("auth", __name__)
