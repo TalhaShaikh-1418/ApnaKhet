@@ -141,23 +141,11 @@ def profile():
 
     if request.method == "POST":
         name = request.form["name"]
-        address = request.form["address"]
-        photo = request.files["photo"]
 
-        if photo and photo.filename != "":
-            filename = secure_filename(photo.filename)
-            photo_path = "static/uploads/" + filename
-            photo.save(photo_path)
-
-            cursor.execute(
-                "UPDATE users SET name=%s, address=%s, photo=%s WHERE id=%s",
-                (name, address, photo_path, uid)
-            )
-        else:
-            cursor.execute(
-                "UPDATE users SET name=%s, address=%s WHERE id=%s",
-                (name, address, uid)
-            )
+        cursor.execute(
+            "UPDATE users SET name=%s WHERE id=%s",
+            (name, uid)
+        )
 
         db.commit()
         return redirect("/farmer")
